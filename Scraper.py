@@ -20,7 +20,7 @@ def get_soup_init(url, print_response=True):
     while request.status_code != 200:
         request = get(url, headers=headers)
         attempts += 1
-        if attempts == max_attempts:
+        if attempts == max_attempts and request.status_code != 200:
             if print_response:
                 start_index = url.find("id=")
                 end_index = url.find("-literowe")
