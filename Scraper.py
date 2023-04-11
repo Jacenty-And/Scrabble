@@ -6,7 +6,7 @@ from requests import get
 from concurrent.futures import ThreadPoolExecutor
 
 
-def get_soup_init(url, print_response=True):
+def get_soup_init(url, print_response=True) -> BeautifulSoup:
     user_agents = [
         "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0",
         "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
@@ -27,7 +27,7 @@ def get_soup_init(url, print_response=True):
                 length = url[start_index + len("id="):end_index]
                 start_index = url.find("litere-")
                 letter = url[start_index + len("litere-")]
-                print(f'\n{length}-{letter}: {request}')
+                print(f'\nLetter: {letter} length: {length}: {request}')
             break
     html_text = request.text
     soup = BeautifulSoup(html_text, 'html.parser')
@@ -42,7 +42,7 @@ def save_to_file(all_words, name, path):
             txt_file.write('\n')
 
 
-def get_words(url):
+def get_words(url) -> list:
     soup = get_soup_init(url)
     divs = soup.find_all('div', class_='card-wrapper')
     words = list()
@@ -54,7 +54,7 @@ def get_words(url):
     return words
 
 
-def get_urls(alphabet):
+def get_urls(alphabet) -> list:
     urls = list()
     for letter in alphabet:
         for length in range(2, 16):
