@@ -11,9 +11,9 @@ def read_from_file(name, path='') -> List[AnyStr]:
 class ScrabbleDict:
     def __init__(self, name, path):
         self.alphabet = 'aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż'
-        self.dictionary = self.make_dictionary(name, path)
+        self.dictionary = self.dictionary_init(name, path)
 
-    def make_dictionary(self, name, path):
+    def dictionary_init(self, name, path):
         dictionary = dict()
         lines = read_from_file(name, path)
         words_grouped = list()
