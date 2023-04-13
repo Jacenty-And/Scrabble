@@ -18,5 +18,10 @@ if __name__ == '__main__':
     print()
 
     bot = ScrabbleBot()
-    print(bot.get_best_word(letters))
+    best_word = bot.get_best_word(letters)
+    print(best_word)
+
+    board.place_word(best_word[1], 7, 7)
+    board.print_board()
+
     print(bot.get_evaluated_and_sorted(letters))

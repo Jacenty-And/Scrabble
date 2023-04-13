@@ -23,3 +23,10 @@ class ScrabbleBoard:
                 print(tile.letter, end='  ')
             print(end='\n')
 
+    def place_word(self, word: str, row: int, column: int, is_vertical=False):
+        for shift, letter in enumerate(word):
+            if is_vertical:
+                self.board[row + shift][column].letter = letter
+            else:
+                self.board[row][column + shift].letter = letter
+
