@@ -1,11 +1,15 @@
 from Scraper import Scraper
 from Pouch import LetterPouch
 from Bot import ScrabbleBot
+from Board import ScrabbleBoard
 
 if __name__ == '__main__':
     scrapper = Scraper()
     scrapper.run()
     scrapper.run_no_threading()
+
+    board = ScrabbleBoard()
+    board.print_board()
 
     bag = LetterPouch()
     letters = bag.get_letters(7)
